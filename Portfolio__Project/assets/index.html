@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="./assets/style.css" />
+        <link rel="stylesheet" href="./assets/mediaqueries.css" />
+    </head>
+    <body>
+        <nav id="desktop-nav">  
+            <div class="logo"> Matthew Malefyt</div>
+            <div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <nav id="hamburger-nav">
+            <div class="logo"> Matthew Malefyt</div>
+            <div class="hamburger-menu"> <!-- menu for mobile accessibility-->
+                <div class="hamburger-icon" onclick="toggleMenu()"> <!-- Won't Show X???!!!-->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">    <!--access views in menu-->
+                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                </div>
+            </div>
+        </nav>
+        <section id="profile">
+            <div class="section"_pic-container> 
+                <img src="./assets/profile-pic.png" alt="Matthew Malefyt profile picture"> <!-- Picture in the center not left-->
+            </div>
+            <div class="section__text">
+                <p class="section__text__p1">Hello, I'm</p>
+                <h1 class="title">Matthew Malefyt</h1>
+                <p class="section__text__p2">Fordham Student</p>
+        </section>
+        <script src="script.js"> </script>
+
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: `http://localhost:8888/users`,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#users-container').html('')
+                        $.each(data, function (key, value) {
+                            $('#users-container').append(`
+                                <div class="user-container margin-thirty">
+                                    <span class="user">${value['firstName']} ${value['lastName']}</span>
+                                    <span>
+                                    <a href="users-update-view/${value['id']}" class="btn btn-primary">edit</a>
+                                    <a href="users-delete-view/${value['id']}" class="btn btn-danger">delete</a>
+                                    </span>
+                                </div>`)
+                        });
+                    }
+                });
+
+            })
+
+
+        </script>
+
+    </body>
+</html>
+
