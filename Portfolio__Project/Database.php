@@ -1,10 +1,5 @@
 <?php
 
-namespace app\core;
-
-use PDO;
-use PDOException;
-
 trait Database
 {
 

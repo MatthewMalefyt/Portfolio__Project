@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-//use Project;
+use models\Project;
 
 class ProjectController
 {
 
-    public function getProjects($id) {
+    public function getProjects() {
         $projectModel = new Project();
         header("Content-Type: application/json");
         

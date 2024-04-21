@@ -15,3 +15,4 @@ class Projects
         return $this->fetchAll($query);
     }
 }
+
