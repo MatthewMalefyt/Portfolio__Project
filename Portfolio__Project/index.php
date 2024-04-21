@@ -1,8 +1,10 @@
 
 <?php
-$env = parse_ini_file('../.env');
+$env = parse_ini_file('./.env');
 require './config.php';
 require './Controller/ProjectController.php';
+require "./Database.php";
+require "./models/Project.php";
 
 use Controller\ProjectController;
 
